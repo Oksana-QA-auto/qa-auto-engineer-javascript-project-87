@@ -1,0 +1,26 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Compares two configuration files and shows a difference.",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "gendiff": "./bin/gendiff.js"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87.git"
+  },
+  "author": "Oksana-QA-auto",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/issues"
+  },
+  "homepage": "https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87#readme"
+}
