@@ -17,7 +17,8 @@
   "author": "Oksana-QA-auto",
   "license": "ISC",
   "dependencies": {
-    "commander": "^11.1.0"
+    "commander": "^11.1.0",
+    "lodash": "^4.17.21"
   },
   "bugs": {
     "url": "https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/issues"
