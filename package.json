@@ -22,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/issues"
   },
-  "homepage": "https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87#readme"
+  "homepage": "https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87#readme",
+  "devDependencies": {
+    "@eslint/create-config": "^1.9.0",
+    "@eslint/js": "^9.30.0",
+    "@stylistic/eslint-plugin": "^5.1.0",
+    "eslint": "^9.30.0",
+    "globals": "^16.2.0"
+  }
 }
