@@ -1,40 +1,25 @@
-import js from '@eslint/js'
 import globals from 'globals'
-import { defineConfig } from 'eslint/config'
+import js from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
-import jestPlugin from 'eslint-plugin-jest';   // npm i -D eslint-plugin-jest
+import importPlg from 'eslint-plugin-import'
 
-export default defineConfig([
+export default [
+  js.configs.recommended,
   stylistic.configs.recommended,
 
   {
-    files: ['**/*.{js,mjs,cjs}'],
-    plugins: { js },
-    extends: ['js/recommended'],
-  },
+    plugins: { import: importPlg },
 
-  {
-    files: ['**/*.{js,mjs,cjs}'],
-    languageOptions: { globals: globals.node },
-  },
-
-  {
-    files: [
-      '**/__tests__/**/*.js',
-      '**/?(*.)+(spec|test).js',
-    ],
-    plugins: { jest: jestPlugin },
-    ...jestPlugin.configs.recommended,
     languageOptions: {
+      ecmaVersion: 2022,
       globals: {
-        jest: true,
-        test: true,
-        expect: true,
-        describe: true,
-        beforeEach: true,
-        afterEach: true,
+        ...globals.node,
+        ...globals.jest,
       },
     },
-    extends: ['plugin:jest/recommended'],
+
+    rules: {
+      'import/order': ['error', { 'newlines-between': 'always' }],
+    },
   },
-])
+]

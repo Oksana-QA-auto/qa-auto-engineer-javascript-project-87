@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-import { Command } from 'commander'
 import { createRequire } from 'node:module'
+
+import { Command } from 'commander'
+
 import genDiff from '../src/index.js'
 
 const require = createRequire(import.meta.url)
