@@ -1,6 +1,6 @@
 export default function formatValue(value) {
-  if (typeof value === 'boolean' || value === null) {
-    return String(value)
+  if (value === null) {
+    return 'null'
   }
-  return value
+  return `${value}`
 }

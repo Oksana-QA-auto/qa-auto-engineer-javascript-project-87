@@ -2,29 +2,30 @@ import _ from 'lodash'
 
 import formatValue from './formatValue.js'
 
-export default function buildDiff(before, after) {
-  const keys = _.sortBy(_.union(Object.keys(before), Object.keys(after)))
+export default function buildDiff(obj1, obj2) {
+  const keys = _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)))
 
   const lines = keys.flatMap((key) => {
-    const hasBefore = Object.hasOwn(before, key)
-    const hasAfter = Object.hasOwn(after, key)
+    const has1 = Object.prototype.hasOwnProperty.call(obj1, key)
+    const has2 = Object.prototype.hasOwnProperty.call(obj2, key)
 
-    if (hasBefore && !hasAfter) {
-      return `  - ${key}: ${formatValue(before[key])}`
+    if (has1 && has2) {
+      const val1 = obj1[key]
+      const val2 = obj2[key]
+      if (_.isEqual(val1, val2)) {
+        return [`  ${key}: ${formatValue(val1)}`]
+      }
+      return [
+        `  - ${key}: ${formatValue(val1)}`,
+        `  + ${key}: ${formatValue(val2)}`,
+      ]
     }
 
-    if (!hasBefore && hasAfter) {
-      return `  + ${key}: ${formatValue(after[key])}`
+    if (has1) {
+      return [`  - ${key}: ${formatValue(obj1[key])}`]
     }
 
-    if (_.isEqual(before[key], after[key])) {
-      return `    ${key}: ${formatValue(before[key])}`
-    }
-
-    return [
-      `  - ${key}: ${formatValue(before[key])}`,
-      `  + ${key}: ${formatValue(after[key])}`,
-    ]
+    return [`  + ${key}: ${formatValue(obj2[key])}`]
   })
 
   return ['{', ...lines, '}'].join('\n')
