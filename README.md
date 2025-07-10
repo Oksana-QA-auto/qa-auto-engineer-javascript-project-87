@@ -1,6 +1,6 @@
 # gendiff
 
-[![CI](https://github.com/oksana-qa-auto/qa-auto-engineer-javascript-project-87/actions/workflows/ci.yml/badge.svg)](https://github.com/oksana-qa-auto/qa-auto-engineer-javascript-project-87/actions/workflows/ci.yml)
+[![CI](https://https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions/workflows/ci.yml/badge.svg)](https://github.com/oksana-qa-auto/qa-auto-engineer-javascript-project-87/actions/workflows/ci.yml)
 
 [![Test Coverage](https://codecov.io/gh/oksana-qa-auto/qa-auto-engineer-javascript-project-87/branch/main/graph/badge.svg)](https://codecov.io/gh/oksana-qa-auto/qa-auto-engineer-javascript-project-87)
 
