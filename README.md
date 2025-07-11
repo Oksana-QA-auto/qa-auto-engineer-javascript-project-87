@@ -4,7 +4,7 @@
 
 [![Test Coverage](https://codecov.io/gh/oksana-qa-auto/qa-auto-engineer-javascript-project-87/branch/main/graph/badge.svg)](https://codecov.io/gh/oksana-qa-auto/qa-auto-engineer-javascript-project-87)
 
-[![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=Oksana-QA-auto_qa-auto-engineer-javascript-project-87&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Oksana-QA-auto_qa-auto-engineer-javascript-project-87)
+[![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=oksana-qa-auto_qa-auto-engineer-javascript-project-87&metric=coverage)](https://sonarcloud.io/summary/new_code?id=oksana-qa-auto_qa-auto-engineer-javascript-project-87)
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions)
