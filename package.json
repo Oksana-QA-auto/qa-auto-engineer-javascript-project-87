@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/index.js",
   "bin": {
-  "gendiff": "./bin/gendiff.js"
+    "gendiff": "./bin/gendiff.js"
   },
   "scripts": {
     "lint": "eslint .",
@@ -14,11 +14,17 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "coverageReporters": ["text", "lcov"],
-    "collectCoverageFrom": ["src/**/*.js"]
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
   },
   "dependencies": {
     "commander": "^11.1.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
