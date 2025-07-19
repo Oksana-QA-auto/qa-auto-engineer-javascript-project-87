@@ -1,22 +1,19 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-import yaml from 'js-yaml'
+import YAML from 'js-yaml'
 
 export default function parse(filepath) {
-  const fullPath = path.resolve(process.cwd(), filepath)
-  const rawData = fs.readFileSync(fullPath, 'utf-8')
-  const ext = path.extname(fullPath).toLowerCase()
+  const content = fs.readFileSync(filepath, 'utf-8')
+  const ext = path.extname(filepath).toLowerCase()
 
-  switch (ext) {
-    case '.json':
-      return JSON.parse(rawData)
-
-    case '.yml':
-    case '.yaml':
-      return yaml.load(rawData)
-
-    default:
-      throw new Error(`Unsupported file extension: ${ext}`)
+  if (ext === '.json') {
+    return JSON.parse(content)
   }
+
+  if (ext === '.yml' || ext === '.yaml') {
+    return YAML.load(content)
+  }
+
+  throw new Error(`Unsupported file extension: ${ext}`)
 }

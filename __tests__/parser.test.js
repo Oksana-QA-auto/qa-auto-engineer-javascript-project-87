@@ -1,11 +1,9 @@
-// __tests__/parser.test.js
 import path from 'node:path'
 import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 import parse from '../src/parser.js'
 
-// В ESM нужно самим определить __filename и __dirname
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
@@ -27,6 +25,5 @@ test('parse() correctly parses JSON files', () => {
 
 test('parse() throws on unsupported extensions', () => {
   const badPath = getFixturePath('file1.txt')
-  expect(() => parse(badPath))
-    .toThrow(/Unsupported file extension: \.txt/)
+  expect(() => parse(badPath)).toThrow(/Unsupported file extension: \.txt/)
 })
