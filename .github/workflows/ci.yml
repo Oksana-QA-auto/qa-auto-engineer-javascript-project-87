@@ -29,7 +29,7 @@ jobs:
       - name: Upload coverage to SonarCloud
         uses: SonarSource/sonarcloud-github-action@v2
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.TOKEN_PROJECT87 }}
         with:
           args: >
             -Dsonar.projectKey=oksana-qa-auto_qa-auto-engineer-javascript-project-87
