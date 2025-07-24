@@ -6,9 +6,18 @@
 
 [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=oksana-qa-auto_qa-auto-engineer-javascript-project-87&metric=coverage)](https://sonarcloud.io/summary/new_code?id=oksana-qa-auto_qa-auto-engineer-javascript-project-87)
 
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions)
+
 
 ### Пример работы пакета "gendiff __fixtures__/file1.json __fixtures__/file2.json":
 
 [![asciicast](https://asciinema.org/a/60FCiVNkTodKgh8mALnaA4MQV.svg)](https://asciinema.org/a/60FCiVNkTodKgh8mALnaA4MQV)
+
+
+## Демонстрация работы пакета `gendiff` (шаг № 7 проекта):
+
+
+[![asciinema demo](https://asciinema.org/a/9LFApKwXMGcKOEq4V3fWJOpjt)](https://asciinema.org/a/9LFApKwXMGcKOEq4V3fWJOpjt)
+
