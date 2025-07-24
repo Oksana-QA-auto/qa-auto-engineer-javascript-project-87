@@ -1,0 +1,7 @@
+organization=oksana-qa-auto
+projectKey=oksana-qa-auto
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.65687
+dashboardUrl=https://sonarcloud.io/dashboard?id=oksana-qa-auto
+ceTaskId=AZg9AOTXMu3jcS1zFMaV
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZg9AOTXMu3jcS1zFMaV
