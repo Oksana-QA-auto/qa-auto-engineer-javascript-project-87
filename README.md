@@ -21,3 +21,8 @@
 
 [![asciinema demo](https://asciinema.org/a/9LFApKwXMGcKOEq4V3fWJOpjt)](https://asciinema.org/a/9LFApKwXMGcKOEq4V3fWJOpjt)
 
+
+## Демонстрация работы пакета вывод в json:
+
+[![asciinema demo](https://asciinema.org/a/JDWuPOcH8I3iujk1Nf9rvNP59)](https://asciinema.org/a/JDWuPOcH8I3iujk1Nf9rvNP59)
+
