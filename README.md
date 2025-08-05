@@ -1,12 +1,51 @@
-# gendiff
+1. # gendiff
 
 [![CI](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions/workflows/ci.yml/badge.svg)](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions/workflows/ci.yml)
 [![hexlet-check](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/workflows/hexlet-check/badge.svg)](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions?query=workflow%3Ahexlet-check)
 
+## Установка и запуск проекта
 
-### Hexlet tests and linter status:
+1. Клонировать репозиторий:
+    ```bash
+    git clone https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87.git
+    cd qa-auto-engineer-javascript-project-87
+    ```
 
-[![Actions Status](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/workflows/hexlet-check/badge.svg)](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions)
+2. Установить зависимости:
+    ```bash
+    npm ci
+    ```
+
+3. Запустить тесты:
+    ```bash
+    npm test
+    ```
+
+4. Проверить код линтером:
+    ```bash
+    npm run lint
+    ```
+
+5. Проверить покрытие тестами:
+    ```bash
+    npm test -- --coverage
+    ```
+
+---
+
+## Hexlet tests and linter status
+
+[![Actions Status](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check/badge.svg)](https://github.com/Oksana-QA-auto/qa-auto-engineer-javascript-project-87/actions)
+
+---
+
+## Пример работы пакета
+
+**Сравнение двух файлов:**
+
+```bash
+gendiff __fixtures__/file1.json __fixtures__/file2.json
+
 
 
 ### Пример работы пакета "gendiff __fixtures__/file1.json __fixtures__/file2.json":
