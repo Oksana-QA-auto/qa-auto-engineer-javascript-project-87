@@ -35,6 +35,3 @@ jobs:
             -Dsonar.projectKey=Oksana-QA-auto_qa-auto-engineer-javascript-project-87
             -Dsonar.organization=oksana-qa-auto
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-
-
- 
