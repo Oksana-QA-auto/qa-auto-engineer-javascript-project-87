@@ -32,7 +32,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.TOKEN_PROJECT87 }}
         with:
           args: >
-            -Dsonar.projectKey=oksana-qa-auto_qa-auto-engineer-javascript-project-87
+            -Dsonar.projectKey=Oksana-QA-auto_qa-auto-engineer-javascript-project-87
             -Dsonar.organization=oksana-qa-auto
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
 
