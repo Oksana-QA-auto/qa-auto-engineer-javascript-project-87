@@ -7,37 +7,27 @@ import genDiff from '../src/index.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-const getFixturePath = filename => join(__dirname, '..', '__fixtures__', filename)
-const readFile = filename => fs.readFileSync(getFixturePath(filename), 'utf-8').trim()
+const getFixturePath = name => join(__dirname, '..', '__fixtures__', name)
+const read = name => fs.readFileSync(getFixturePath(name), 'utf-8').trim()
 
-const expectedStylish = readFile('expected_stylish.txt')
-const expectedPlain = readFile('expected_plain.txt')
-const expectedJson = readFile('expected_json.txt')
+const expectedStylish = read('expected_stylish.txt')
+const expectedPlain = read('expected_plain.txt')
+const expectedJsonParsed = JSON.parse(read('expected_json.txt'))
 
-const formats = ['json', 'yml']
-const outputs = [
-  { format: undefined, expected: expectedStylish },
-  { format: 'stylish', expected: expectedStylish },
-  { format: 'plain', expected: expectedPlain },
-  { format: 'json', expected: expectedJson },
-]
+// Нормализуем переводы строк (Windows vs Unix)
+const normalize = s => s.replace(/\r\n/g, '\n')
 
 describe('genDiff', () => {
-  test.each(formats)('compare %s files in all output formats', (format) => {
+  test.each(['json', 'yml'])('compare %s files in all output formats', (format) => {
     const file1 = getFixturePath(`file1.${format}`)
     const file2 = getFixturePath(`file2.${format}`)
 
-    outputs.forEach(({ format: outputFormat, expected }) => {
-      const result = genDiff(file1, file2, outputFormat)
+    expect(normalize(genDiff(file1, file2))).toEqual(normalize(expectedStylish))
 
-      // Нормализуем переходы строк для корректного сравнения (Windows vs Unix)
-      const normalizeNewlines = str => str.replace(/\r\n/g, '\n')
+    expect(normalize(genDiff(file1, file2, 'stylish'))).toEqual(normalize(expectedStylish))
 
-      const isJson = outputFormat === 'json'
-      const actual = isJson ? JSON.parse(result) : normalizeNewlines(result)
-      const expectedValue = isJson ? JSON.parse(expected) : normalizeNewlines(expected)
+    expect(normalize(genDiff(file1, file2, 'plain'))).toEqual(normalize(expectedPlain))
 
-      expect(actual).toEqual(expectedValue)
-    })
+    expect(JSON.parse(genDiff(file1, file2, 'json'))).toEqual(expectedJsonParsed)
   })
 })
