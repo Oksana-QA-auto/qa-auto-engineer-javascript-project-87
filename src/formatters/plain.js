@@ -5,10 +5,11 @@ const formatValue = (value) => {
   return String(value)
 }
 
-const plain = (tree) => {
-  const iter = (nodes, ancestry = []) => nodes
-    .flatMap((node) => {
+const formatPlain = (tree) => {
+  const iter = (nodes, ancestry = []) =>
+    nodes.flatMap((node) => {
       const property = [...ancestry, node.key].join('.')
+
       switch (node.type) {
         case 'added':
           return `Property '${property}' was added with value: ${formatValue(node.value)}`
@@ -18,14 +19,14 @@ const plain = (tree) => {
           return `Property '${property}' was updated. From ${formatValue(node.oldValue)} to ${formatValue(node.newValue)}`
         case 'nested':
           return iter(node.children, [...ancestry, node.key])
-        default:
+        case 'unchanged':
           return []
+        default:
+          throw new Error(`Unknown node type: ${node.type}`)
       }
     })
-    .filter(Boolean)
-    .join('\n')
 
-  return iter(tree)
+  return iter(tree).filter(Boolean).join('\n')
 }
 
-export default plain
+export default formatPlain
