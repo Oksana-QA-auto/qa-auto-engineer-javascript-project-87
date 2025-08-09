@@ -14,20 +14,14 @@ const expectedStylish = read('expected_stylish.txt')
 const expectedPlain = read('expected_plain.txt')
 const expectedJsonParsed = JSON.parse(read('expected_json.txt'))
 
-// Нормализуем переводы строк (Windows vs Unix)
-const normalize = s => s.replace(/\r\n/g, '\n')
-
 describe('genDiff', () => {
   test.each(['json', 'yml'])('compare %s files in all output formats', (format) => {
     const file1 = getFixturePath(`file1.${format}`)
     const file2 = getFixturePath(`file2.${format}`)
 
-    expect(normalize(genDiff(file1, file2))).toEqual(normalize(expectedStylish))
-
-    expect(normalize(genDiff(file1, file2, 'stylish'))).toEqual(normalize(expectedStylish))
-
-    expect(normalize(genDiff(file1, file2, 'plain'))).toEqual(normalize(expectedPlain))
-
+    expect(genDiff(file1, file2)).toEqual(expectedStylish)
+    expect(genDiff(file1, file2, 'stylish')).toEqual(expectedStylish)
+    expect(genDiff(file1, file2, 'plain')).toEqual(expectedPlain)
     expect(JSON.parse(genDiff(file1, file2, 'json'))).toEqual(expectedJsonParsed)
   })
 })
