@@ -1,16 +1,17 @@
 import stylish from './stylish.js'
 import plain from './plain.js'
-import json from './json.js'
+import toJson from './json.js'
 
 const formatters = {
   stylish,
   plain,
-  json,
+  json: toJson,
 }
 
-export default (format) => {
-  if (!formatters[format]) {
-    throw new Error(`Unknown format: ${format}`)
+export default (diffTree, formatName = 'stylish') => {
+  const formatter = formatters[formatName]
+  if (!formatter) {
+    throw new Error(`Unknown format: ${formatName}`)
   }
-  return formatters[format]
+  return formatter(diffTree)
 }
