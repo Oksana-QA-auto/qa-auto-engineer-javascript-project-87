@@ -8,11 +8,11 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 const getFixturePath = name => join(__dirname, '..', '__fixtures__', name)
-const read = name => fs.readFileSync(getFixturePath(name), 'utf-8').trim()
+const readFile = name => fs.readFileSync(getFixturePath(name), 'utf-8').trim()
 
-const expectedStylish = read('expected_stylish.txt')
-const expectedPlain = read('expected_plain.txt')
-const expectedJsonParsed = JSON.parse(read('expected_json.txt'))
+const expectedStylish = readFile('expected_stylish.txt')
+const expectedPlain = readFile('expected_plain.txt')
+const expectedJsonParsed = JSON.parse(readFile('expected_json.txt'))
 
 describe('genDiff', () => {
   test.each(['json', 'yml'])('compare %s files in all output formats', (format) => {
@@ -23,5 +23,13 @@ describe('genDiff', () => {
     expect(genDiff(file1, file2, 'stylish')).toEqual(expectedStylish)
     expect(genDiff(file1, file2, 'plain')).toEqual(expectedPlain)
     expect(JSON.parse(genDiff(file1, file2, 'json'))).toEqual(expectedJsonParsed)
+  })
+})
+
+describe('errors', () => {
+  test('throws on unsupported file extension', () => {
+    const bad = getFixturePath('file1.txt')
+    const good = getFixturePath('file2.json')
+    expect(() => genDiff(bad, good)).toThrow(/Unsupported/i)
   })
 })
