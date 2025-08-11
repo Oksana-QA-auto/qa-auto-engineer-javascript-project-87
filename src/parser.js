@@ -1,9 +1,9 @@
 import YAML from 'js-yaml'
 
-export default function parse(data, format) {
-  const kind = String(format).replace(/^\./, '').toLowerCase()
+const parse = (data, format) => {
+  const normalizedFormat = String(format).toLowerCase()
 
-  switch (kind) {
+  switch (normalizedFormat) {
     case 'json':
       return JSON.parse(data)
     case 'yml':
@@ -13,3 +13,5 @@ export default function parse(data, format) {
       throw new Error(`Unsupported data format: ${format}`)
   }
 }
+
+export default parse

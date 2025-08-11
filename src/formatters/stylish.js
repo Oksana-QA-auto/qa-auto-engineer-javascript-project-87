@@ -1,33 +1,27 @@
-const getIndent = (depth, spacesCount = 4) => ' '.repeat(depth * spacesCount - 2)
-const bracketIndent = (depth, spacesCount = 4) => ' '.repeat(depth * spacesCount - spacesCount)
+const SPACES = 4
+const OFFSET = 2
+
+const getIndent = (depth, spaces = SPACES) => ' '.repeat(depth * spaces - OFFSET)
+const getBracketIndent = (depth, spaces = SPACES) => ' '.repeat(depth * spaces - spaces)
 
 const stringify = (value, depth) => {
-  if (value !== null && typeof value === 'object') {
-    const lines = Object
-      .entries(value)
-      .map(([key, val]) => `${getIndent(depth + 1)}  ${key}: ${stringify(val, depth + 1)}`)
-
-    return [
-      '{',
-      ...lines,
-      `${bracketIndent(depth + 1)}}`,
-    ].join('\n')
+  if (value === null || typeof value !== 'object') {
+    return String(value)
   }
 
-  return String(value)
+  const lines = Object.entries(value)
+    .map(([key, val]) => `${getIndent(depth + 1)}${key}: ${stringify(val, depth + 1)}`)
+
+  return `{\n${lines.join('\n')}\n${getBracketIndent(depth + 1)}}`
 }
 
-const formatStylish = (diffTree) => {
-  const iter = (nodes, depth) => nodes.flatMap((node) => {
+const iter = (nodes, depth) => nodes
+  .map((node) => {
     const indent = getIndent(depth)
 
     switch (node.type) {
       case 'nested':
-        return [
-          `${indent}${node.key}: {`,
-          ...iter(node.children, depth + 1),
-          `${bracketIndent(depth)}}`,
-        ]
+        return `${indent}${node.key}: {\n${iter(node.children, depth + 1).join('\n')}\n${getBracketIndent(depth)}}`
 
       case 'added':
         return `${indent}+ ${node.key}: ${stringify(node.value, depth)}`
@@ -39,21 +33,14 @@ const formatStylish = (diffTree) => {
         return `${indent}  ${node.key}: ${stringify(node.value, depth)}`
 
       case 'updated':
-        return [
-          `${indent}- ${node.key}: ${stringify(node.oldValue, depth)}`,
-          `${indent}+ ${node.key}: ${stringify(node.newValue, depth)}`,
-        ]
+        return `${indent}- ${node.key}: ${stringify(node.oldValue, depth)}\n`
+          + `${indent}+ ${node.key}: ${stringify(node.newValue, depth)}`
 
       default:
         throw new Error(`Unknown node type: ${node.type}`)
     }
   })
 
-  return [
-    '{',
-    ...iter(diffTree, 1),
-    '}',
-  ].join('\n')
-}
+const formatStylish = diffTree => `{\n${iter(diffTree, 1).join('\n')}\n}`
 
 export default formatStylish

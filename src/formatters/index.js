@@ -8,10 +8,12 @@ const formatters = {
   json,
 }
 
-export default (formatName = 'stylish') => {
+export const getFormatter = (formatName = 'stylish') => {
   const formatter = formatters[formatName]
   if (!formatter) {
     throw new Error(`Unknown format: ${formatName}`)
   }
   return formatter
 }
+
+export default getFormatter

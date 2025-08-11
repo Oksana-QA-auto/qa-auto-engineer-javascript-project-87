@@ -5,12 +5,12 @@ import parse from './parser.js'
 import buildDiff from './buildDiff.js'
 import getFormatter from './formatters/index.js'
 
-const readFile = p => fs.readFileSync(p, 'utf-8')
-const getExt = p => path.extname(p).slice(1).toLowerCase()
+const readFile = filePath => fs.readFileSync(filePath, 'utf-8')
+const getExt = filePath => path.extname(filePath).slice(1).toLowerCase()
 
-const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
-  const data1 = parse(readFile(filepath1), getExt(filepath1))
-  const data2 = parse(readFile(filepath2), getExt(filepath2))
+const genDiff = (filePath1, filePath2, formatName = 'stylish') => {
+  const data1 = parse(readFile(filePath1), getExt(filePath1))
+  const data2 = parse(readFile(filePath2), getExt(filePath2))
 
   const diffTree = buildDiff(data1, data2)
 
