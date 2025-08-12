@@ -3,7 +3,7 @@ import path from 'node:path'
 
 import parse from './parser.js'
 import buildDiff from './buildDiff.js'
-import getFormatter from './formatters/index.js'
+import format from './formatters/index.js'
 
 const readFile = filePath => fs.readFileSync(filePath, 'utf-8')
 const getExt = filePath => path.extname(filePath).slice(1).toLowerCase()
@@ -14,8 +14,7 @@ const genDiff = (filePath1, filePath2, formatName = 'stylish') => {
 
   const diffTree = buildDiff(data1, data2)
 
-  const format = getFormatter(formatName)
-  return format(diffTree)
+  return format(diffTree, formatName)
 }
 
 export default genDiff
